@@ -1,1 +1,8 @@
 sample sinatra + datamapper + passenger application for chirb presentation.
+
+branches:
+
+-- 01_hello_world --
+
+a dirt simple hello world sinatr app with tests
+
