@@ -4,5 +4,9 @@ branches:
 
 -- 01_hello_world --
 
-a dirt simple hello world sinatra app with tests
+a dirt simple hello world sinatra app with tests.
+
+-- 02_fun_with_routes --
+
+examples of all actions against routes.
 
