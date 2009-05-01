@@ -1,4 +1,5 @@
 require 'rake/testtask'
+require 'fileutils'
 
 Rake::TestTask.new do |t|
   t.name = 'test:unit'
@@ -12,5 +13,11 @@ Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = FileList['test/functional/test*.rb']
   t.verbose = true
+end
+
+namespace :db do
+  task :reset do
+    FileUtils.rm("db/development.rb") if File.exists?("db/development.rb")
+  end
 end
 
