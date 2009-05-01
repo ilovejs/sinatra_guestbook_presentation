@@ -10,3 +10,7 @@ a dirt simple hello world sinatra app with tests.
 
 examples of all actions against routes.
 
+-- 03_adding_a_database --
+
+adding a database and datamapper models.
+
