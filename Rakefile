@@ -26,5 +26,10 @@ namespace :db do
   task :reset do
     FileUtils.rm("db/development.db") if File.exists?("db/development.db")
   end
+
+  task :migrate do
+    require 'db/db'
+    DataMapper.auto_upgrade!
+  end
 end
 

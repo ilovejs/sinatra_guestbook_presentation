@@ -7,7 +7,13 @@ class TestGuestbook < Test::Unit::TestCase
 
   context 'GET on /entries' do
     should 'return a list of entries' do
-      assert true
+      Entry.create :name => "Drew", :message => "Hi!"
+      Entry.create :name => "Ryann", :message => "Howdy."
+
+      get '/entries'
+
+      doc = Hpricot(response.body)
+      assert_equal 2, (doc/'div.entry').size
     end
   end
 end
