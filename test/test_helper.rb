@@ -6,7 +6,16 @@ require 'rubygems'
 require 'shoulda'
 require 'sinatra/test'
 require 'sinatra'
+require 'bootstrap'
 
 set :environment, :test
 set :views, File.join(base_dir,'views')
+
+DataMapper.auto_migrate!
+
+class Test::Unit::TestCase
+  def assert_false(value)
+    assert !value, "<#{value}> is not <false>" 
+  end
+end
 
