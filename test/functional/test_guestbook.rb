@@ -1,7 +1,8 @@
-require File.join(File.dirname(__FILE__),'test_helper.rb')
+require File.join(File.dirname(__FILE__),'functional_test_helper.rb')
 require 'guestbook.rb'
 
 class TestGuestbook < Test::Unit::TestCase
+  include FunctionalTestCase
   include Sinatra::Test
 
   context 'GET /' do
@@ -79,7 +80,7 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.body.include?('prefix - 456')
     end
 
-    should 'include the prefix' do
+    should 'include the sufix' do
       assert response.body.include?('sufix - 7890')
     end
   end

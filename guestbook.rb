@@ -1,5 +1,4 @@
-require 'rubygems'
-require 'sinatra'
+require 'bootstrap'
 
 get '/' do
   erb :index
