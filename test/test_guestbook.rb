@@ -10,10 +10,6 @@ class TestGuestbook < Test::Unit::TestCase
     should 'be successful' do
       assert response.ok?
     end
-
-    should 'return the text "hello world"' do
-      assert response.body.include?('hello world')
-    end
   end
 
   context 'GET /action' do
@@ -24,7 +20,7 @@ class TestGuestbook < Test::Unit::TestCase
     end
 
     should 'return the text get' do
-      assert_equal response.body, 'get'
+      assert response.body.include?('get')
     end
   end
 
@@ -35,8 +31,8 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.ok?
     end
 
-    should 'return the text get' do
-      assert_equal response.body, 'post'
+    should 'return the text post' do
+      assert response.body.include?('post')
     end
   end
 
@@ -47,8 +43,8 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.ok?
     end
 
-    should 'return the text get' do
-      assert_equal response.body, 'put'
+    should 'return the text put' do
+      assert response.body.include?('put')
     end
   end
 
@@ -59,8 +55,32 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.ok?
     end
 
-    should 'return the text get' do
-      assert_equal response.body, 'delete'
+    should 'return the text delete' do
+      assert response.body.include?('delete')
+    end
+  end
+
+  context 'GET /hello/:name' do
+    setup { get '/hello/drew' }
+
+    should 'return the name drew' do
+      assert response.body.include?('drew')
+    end
+  end
+
+  context 'GET with a phone number pattern' do
+    setup { get '/123-456-7890' }
+
+    should 'include the area code' do
+      assert response.body.include?('area code - 123')
+    end
+
+    should 'include the prefix' do
+      assert response.body.include?('prefix - 456')
+    end
+
+    should 'include the prefix' do
+      assert response.body.include?('sufix - 7890')
     end
   end
 end
