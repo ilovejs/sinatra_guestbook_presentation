@@ -17,7 +17,7 @@ end
 
 namespace :db do
   task :reset do
-    FileUtils.rm("db/development.rb") if File.exists?("db/development.rb")
+    FileUtils.rm("db/development.db") if File.exists?("db/development.db")
   end
 end
 
