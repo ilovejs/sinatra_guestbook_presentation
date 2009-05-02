@@ -1,0 +1,12 @@
+<div class="comment-form">
+  <form method="post" action="/entry/<%= @entry.id %>/comment">
+    <p>
+      <label for="body">Comment</label><br />
+      <textarea class="text" name="body" id="body" rows="5" cols="20"></textarea>
+    </p>
+    <p><input type="submit" value="Create"></p>
+  </form>
+</div>
+<hr />
+<p><a href="/entry/<%= @entry.id %>">Back</a></p>
+

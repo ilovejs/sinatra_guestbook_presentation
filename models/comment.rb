@@ -2,7 +2,7 @@ class Comment
   include DataMapper::Resource
 
   property :id, Serial
-  property :body, String, :nullable => false
+  property :body, Text, :nullable => false
 
   belongs_to :entry
 end

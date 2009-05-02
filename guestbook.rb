@@ -56,3 +56,15 @@ post '/entry' do
   erb :entry
 end
 
+get '/entry/:id/comment/new' do
+  @entry = Entry.first(:id => params[:id])
+  erb :comment_new
+end
+
+post '/entry/:id/comment' do
+  @entry = Entry.first(:id => params[:id])
+  @entry.comments << Comment.create(:body => params[:body])  
+  @entry.save
+  erb :entry
+end
+

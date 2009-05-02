@@ -35,6 +35,15 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.body.include?('Hi')
     end
 
+    should 'contain a comment' do
+      entry = Factory.create_entry
+
+      get "/entry/#{entry.id}"
+
+      doc = Hpricot(response.body)
+      assert_equal 1, (doc/'div.comment').size
+    end
+
     context 'with a format' do
       should 'return the xml representation of an entry' do
         entry = Factory.create_entry
@@ -108,5 +117,23 @@ class TestGuestbook < Test::Unit::TestCase
       assert Entry.first(entry.id).empty?
     end
   end
+
+  context 'GET on /entry/:id/comment/new' do
+    should 'give a form for adding a comment to an entry' do
+      entry = Factory.create_entry
+      get "/entry/#{entry.id}/comment/new"
+
+      doc = Hpricot(response.body)
+      assert_equal 1, (doc/'div.comment-form').size
+    end
+  end
+
+  # context 'POST on /entry/:id/comment' do
+  #   should 'add a new comment to the entry' do
+  #     entry = Factory.create_entry
+  #     post "/entry/#{entry.id}/comment", :body => "new comment"
+  #     assert_equal 2, Entry.first(entry.id).comments.size
+  #   end
+  # end
 end
 
