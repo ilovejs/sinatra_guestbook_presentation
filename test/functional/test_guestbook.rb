@@ -34,6 +34,24 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.body.include?('Drew')
       assert response.body.include?('Hi')
     end
+
+    context 'with a format' do
+      should 'return the xml representation of an entry' do
+        entry = Factory.create_entry
+
+        get "/entry/#{entry.id}.xml"
+
+        assert_equal entry.to_xml, response.body
+      end
+
+      should 'return the json representation of an entry' do
+        entry = Factory.create_entry
+
+        get "/entry/#{entry.id}.json"
+
+        assert_equal entry.to_json, response.body
+      end
+    end
   end
 
   context 'GET on /entry/:id/edit' do

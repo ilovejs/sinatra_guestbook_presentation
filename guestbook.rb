@@ -11,6 +11,18 @@ get '/entry/new' do
   erb :entry_new
 end
 
+get '/entry/:id.:format' do
+  @entry = Entry.first(:id => params[:id])
+
+  if params[:format] == 'json'
+    @entry.to_json
+  elsif params[:format] == 'xml'
+    @entry.to_xml
+  else
+    erb :entry
+  end
+end
+
 get '/entry/:id' do
   @entry = Entry.first(:id => params[:id])
   erb :entry
