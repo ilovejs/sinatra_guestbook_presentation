@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'bootstrap'
+require 'db/db'
 
 get '/entries' do
   @entries = Entry.all

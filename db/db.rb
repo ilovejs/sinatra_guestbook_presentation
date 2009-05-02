@@ -3,7 +3,6 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-aggregates'
 require 'dm-validations'
-require 'fileutils'
 
 DataMapper.setup(
   :default, 

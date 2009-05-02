@@ -6,7 +6,7 @@ require 'rubygems'
 require 'shoulda'
 require 'sinatra/test'
 require 'sinatra'
-require 'bootstrap'
+require 'db/db'
 require 'test/factory'
 
 set :environment, :test
