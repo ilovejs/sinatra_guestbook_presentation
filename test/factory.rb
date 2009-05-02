@@ -17,6 +17,16 @@ class Factory
       :name => "Drew",
       :message => "Hi"
     }
-    Entry.new default_values.merge(options)
+    entry = Entry.new default_values.merge(options)
+    entry.comments << new_comment
+    entry
+  end
+
+  build_create_method :comment
+  def self.new_comment(options={})
+    default_values = {
+      :body => 'A comment'
+    }
+    Comment.new default_values.merge(options)
   end
 end

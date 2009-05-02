@@ -4,4 +4,7 @@ class Entry
   property :id, Serial
   property :name, String, :nullable => false
   property :message, Text, :nullable => false
+
+  has n, :comments
 end
+
