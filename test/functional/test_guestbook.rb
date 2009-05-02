@@ -7,8 +7,7 @@ class TestGuestbook < Test::Unit::TestCase
 
   context 'GET on /entries' do
     should 'return a list of entries' do
-      Entry.create :name => "Drew", :message => "Hi!"
-      Entry.create :name => "Ryann", :message => "Howdy."
+      2.times { Factory.create_entry }
 
       get '/entries'
 

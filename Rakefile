@@ -38,5 +38,7 @@ namespace :db do
     FileUtils.touch("db/development.db") if File.exists?("db/development.db")
     SampleData.load
   end
+
+  task :prepare => ['db:reset','db:migrate','db:load_sample_data']
 end
 

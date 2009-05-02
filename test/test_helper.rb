@@ -7,6 +7,7 @@ require 'shoulda'
 require 'sinatra/test'
 require 'sinatra'
 require 'bootstrap'
+require 'test/factory'
 
 set :environment, :test
 set :views, File.join(base_dir,'views')

@@ -5,22 +5,22 @@ class TestEntry < Test::Unit::TestCase
 
   context 'an entry' do
     should 'have a name' do
-      entry = Entry.new :name => "Drew", :message => "Zomg a message"
+      entry = Factory.new_entry
       assert_equal "Drew", entry.name
     end
 
     should 'not allow blank names' do
-      entry = Entry.new :message => 'test message'
+      entry = Factory.new_entry :name => nil
       assert_false entry.valid?
     end
 
     should 'have a message' do
-      entry = Entry.new :name => "Drew", :message => "Zomg a message"
-      assert_equal "Zomg a message", entry.message
+      entry = Factory.new_entry
+      assert_equal "Hi", entry.message
     end
 
     should 'not allow blank messages' do
-      entry = Entry.new :name => 'Drew'
+      entry = Factory.new_entry :message => nil
       assert_false entry.valid?
     end
   end
