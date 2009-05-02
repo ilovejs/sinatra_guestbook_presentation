@@ -1,8 +1,15 @@
 <% @entries.each do |entry| %>
-  <div class="entry">
-    <p><%= entry.name %></p>
-    <p><%= entry.message %></p>
+  <div class="span-20">
+    <div class="entry">
+      <p><%= entry.name %></p>
+      <p><%= entry.message %></p>
+    </div>
+  </div>
+  <div class="span-4 last">
+    <a href="/entry/<%= entry.id %>">View</a>
   </div>
   <hr />
 <% end %>
+
+<p><a href="/entry/new">Add entry</a></p>
 

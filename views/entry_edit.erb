@@ -1,0 +1,16 @@
+<div class="entry-form">
+  <form method="post" action="/entry/<%= @entry.id %>">
+    <input class="hide" name="_method" value="put" />
+    <p>
+      <label for="name">Name</label><br />
+      <input type="text" class="title" name="name" id="name" value="<%= @entry.name %>" />
+    </p>
+    <p>
+      <label for="message">Message</label><br />
+      <textarea class="text" name="message" id="message" rows="5" cols="20"><%= @entry.message %></textarea>
+    </p>
+    <p><input type="submit" value="Edit"></p>
+  </form>
+</div>
+<p><a href="/entry/<%= @entry.id %>">Back</a></p>
+

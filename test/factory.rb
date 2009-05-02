@@ -4,7 +4,9 @@ class Factory
   def self.build_create_method(name)
     class << self; self; end.instance_eval do
       define_method("create_#{name}") do
-        self.send("new_#{name}").save
+        instance = self.send("new_#{name}")
+        instance.save
+        instance
       end
     end
   end

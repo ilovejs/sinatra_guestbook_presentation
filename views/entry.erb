@@ -1,0 +1,19 @@
+<div class="entry">
+  <div class="span-20">
+    <p><%= @entry.name %></p>
+    <p><%= @entry.message %></p>
+  </div>
+  <div class="span-4 last">
+    <a href="/entry/<%= @entry.id %>/edit">Edit</a>
+  </div>
+  <hr>
+</div>
+<div class="entry-delete">
+  <form method="post" action="/entry/<%= @entry.id %>">
+    <input class="hide" name="_method" value="delete" />
+    <p><input type="submit" value="Delete"></p>
+  </form>
+  <hr>
+</div>
+<p><a href="/entries">View All</a></p>
+

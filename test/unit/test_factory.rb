@@ -1,5 +1,4 @@
 require File.join(File.dirname(__FILE__),'unit_test_helper.rb')
-require 'test/factory'
 
 class TestFactory < Test::Unit::TestCase
   context 'a factory' do
