@@ -31,5 +31,12 @@ namespace :db do
     require 'db/db'
     DataMapper.auto_upgrade!
   end
+
+  task :load_sample_data do
+    require 'db/db'
+    require 'test/sample_data'
+    FileUtils.touch("db/development.db") if File.exists?("db/development.db")
+    SampleData.load
+  end
 end
 
