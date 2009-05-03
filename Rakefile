@@ -22,9 +22,10 @@ Rake::TestTask.new do |t|
 end
 
 namespace :db do
-  desc 'Reset development database'
   task :reset do
-    FileUtils.rm("db/development.db") if File.exists?("db/development.db")
+    require 'db/db'
+    env = Sinatra::Application.environment
+    FileUtils.rm("db/#{env}.db") if File.exists?("db/#{env}.db")
   end
 
   task :migrate do
@@ -35,7 +36,8 @@ namespace :db do
   task :load_sample_data do
     require 'db/db'
     require 'test/sample_data'
-    FileUtils.touch("db/development.db") if File.exists?("db/development.db")
+    env = Sinatra::Application.environment
+    FileUtils.touch("db/#{env}.db") if File.exists?("db/#{env}.db")
     SampleData.load
   end
 
