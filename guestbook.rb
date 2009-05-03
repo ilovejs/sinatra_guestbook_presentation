@@ -46,6 +46,7 @@ end
 
 delete '/entry/:id' do
   entry = Entry.first(:id => params[:id])
+  entry.comments.destroy!
   entry.destroy
   @entries = Entry.all
   erb :entries
@@ -63,8 +64,7 @@ end
 
 post '/entry/:id/comment' do
   @entry = Entry.first(:id => params[:id])
-  @entry.comments << Comment.create(:body => params[:body])  
-  @entry.save
+  @entry.comments.create(:body => params[:body])
   erb :entry
 end
 

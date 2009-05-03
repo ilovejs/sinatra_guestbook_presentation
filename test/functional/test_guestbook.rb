@@ -116,6 +116,12 @@ class TestGuestbook < Test::Unit::TestCase
       delete "/entry/#{entry.id}"
       assert Entry.first(entry.id).empty?
     end
+
+    should 'delete all comments associated with the entry' do
+      entry = Factory.create_entry
+      delete "/entry/#{entry.id}"
+      assert Comment.all(:entry_id => entry.id).empty?
+    end
   end
 
   context 'GET on /entry/:id/comment/new' do
@@ -128,12 +134,12 @@ class TestGuestbook < Test::Unit::TestCase
     end
   end
 
-  # context 'POST on /entry/:id/comment' do
-  #   should 'add a new comment to the entry' do
-  #     entry = Factory.create_entry
-  #     post "/entry/#{entry.id}/comment", :body => "new comment"
-  #     assert_equal 2, Entry.first(entry.id).comments.size
-  #   end
-  # end
+  context 'POST on /entry/:id/comment' do
+    should 'add a new comment to the entry' do
+      entry = Factory.create_entry
+      post "/entry/#{entry.id}/comment", :body => "new comment"
+      assert_equal 2, Entry.first(entry.id).comments.size
+    end
+  end
 end
 
