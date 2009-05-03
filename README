@@ -18,3 +18,7 @@ adding a database and datamapper models.
 
 added a comment model
 
+-- 05_deploy_with_passenger --
+
+add a config.ru file to deploy with passenger
+
