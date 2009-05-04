@@ -79,7 +79,7 @@ class TestGuestbook < Test::Unit::TestCase
       assert response.body.include?('prefix - 456')
     end
 
-    should 'include the prefix' do
+    should 'include the sufix' do
       assert response.body.include?('sufix - 7890')
     end
   end
